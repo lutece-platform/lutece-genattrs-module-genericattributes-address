@@ -53,8 +53,8 @@
 		<jiraComponentId>10330</jiraComponentId>
 	</properties>
 	<scm>
-		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/directory-form-workflow/module-genericattributes-address</connection>
-		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/directory-form-workflow/module-genericattributes-address</developerConnection>
-		<url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/directory-form-workflow/module-genericattributes-address</url>
+		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/genericattributes/module-genericattributes-address</connection>
+		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/genericattributes/module-genericattributes-address</developerConnection>
+		<url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/genericattributes/module-genericattributes-address</url>
 	</scm>
 </project>
