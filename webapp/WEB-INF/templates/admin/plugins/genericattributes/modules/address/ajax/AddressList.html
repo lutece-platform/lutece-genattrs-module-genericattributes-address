@@ -1,0 +1,10 @@
+<#-- lists all adresses -->
+<p>#i18n{module.genericattributes.address.listAddress.selectAddress}</p>
+
+<ul>
+<#list listAddresses as address>
+	<li>
+		<input type="radio" value="${address.code}" name="id_address" onclick="selectAddress(${id_entry}, ${address.code});" />&nbsp;${address.name}
+	</li>
+</#list>
+</ul>
