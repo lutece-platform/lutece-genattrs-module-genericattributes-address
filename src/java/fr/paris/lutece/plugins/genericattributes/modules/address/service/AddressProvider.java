@@ -116,4 +116,13 @@ public class AddressProvider implements IMapProvider
         }
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Object getParameter( int nKey )
+    {
+        return null;
+    }
 }
