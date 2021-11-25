@@ -1,25 +1,13 @@
 <input type="hidden" id="${entry.idEntry}_map_provider" name="${entry.idEntry}_map_provider" value="${entry.mapProvider.key}"/>
-<div class="form-element">
-	<span class="form-label">
-		<label for="">&nbsp;</label>
-	</span>
-	<span class="form-field-column">
-	<input type="button" name="${entry.idEntry}_button_check" id="${entry.idEntry}_button_check" 
-		value="#i18n{module.genericattributes.address.button.checkAddress}" 
-		title="#i18n{module.genericattributes.address.button.checkAddressHelp}"
-		onclick="checkAddress( ${entry.idEntry} )"
-		class="-lutece-input -lutece-border-radius-mini hide" /><#-- hide to non javascript users -->
-	</span>
-</div>
-<div class="form-element" id="${entry.idEntry}_address_results"></div>
+<div class="form-group" id="${entry.idEntry}_address_results"></div>
 <script type="text/javascript" src="js/plugins/genericattributes/modules/address/genericattributes_address.js"></script>
 <script type="text/javascript">
-	$( '#${entry.idEntry}_button_check' ).removeClass('hide');
-	$( '#${entry.idEntry}_address' ).keypress( function(event) {
-		if (event.keyCode == '13') { // Enter button
-		     event.preventDefault(  );
-		     checkAddress( ${entry.idEntry} );
-		}
-	});
+$( '#${entry.idEntry}_button_check' ).removeClass('hide');
+$( '#${entry.idEntry}_address' ).keypress( function(event) {
+	if (event.keyCode == '13') { // Enter button
+			event.preventDefault(  );
+			checkAddress( ${entry.idEntry} );
+	}
+});
 </script>
 <noscript>#i18n{module.genericattributes.address.javascript.disabled}</noscript>
