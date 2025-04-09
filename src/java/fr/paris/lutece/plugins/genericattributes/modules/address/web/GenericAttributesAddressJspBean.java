@@ -52,9 +52,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
 /**
@@ -460,46 +461,42 @@ public class GenericAttributesAddressJspBean
          */
         public String toJSONString( Locale locale )
         {
-            JSONObject jsonObject = new JSONObject( );
+            ObjectMapper mapper = new ObjectMapper();
+            ObjectNode jsonObject = mapper.createObjectNode();
 
-            try
+            
+            jsonObject.put( JSON_X, getX( ) );
+            jsonObject.put( JSON_Y, getY( ) );
+            jsonObject.put( JSON_ERROR, isError( ) );
+            jsonObject.put( JSON_MESSAGE, getMessage( ) );
+            jsonObject.put( JSON_SINGLE_RESULT, isSingleResult( ) );
+            jsonObject.put( JSON_NO_RESULT, isNoResult( ) );
+            jsonObject.put( JSON_ADDRESS_LABEL, getAddressLabel( ) );
+            jsonObject.put( JSON_ID_ADDRESS, getIdAddress( ) );
+
+            HtmlTemplate template;
+            if ( isNoResult( ) )
             {
-                jsonObject.put( JSON_X, getX( ) );
-                jsonObject.put( JSON_Y, getY( ) );
-                jsonObject.put( JSON_ERROR, isError( ) );
-                jsonObject.put( JSON_MESSAGE, getMessage( ) );
-                jsonObject.put( JSON_SINGLE_RESULT, isSingleResult( ) );
-                jsonObject.put( JSON_NO_RESULT, isNoResult( ) );
-                jsonObject.put( JSON_ADDRESS_LABEL, getAddressLabel( ) );
-                jsonObject.put( JSON_ID_ADDRESS, getIdAddress( ) );
-
-                HtmlTemplate template;
-                if ( isNoResult( ) )
-                {
-                    template = AppTemplateService.getTemplate( TEMPLATE_NO_RESULT, locale );
-                }
-                else if ( isSingleResult( ) )
-                {
-                    Map<String, Object> model = new HashMap<String, Object>( );
-                    model.put( MARK_ADDRESS, getAddresses( ).get( 0 ) );
-                    model.put( MARK_ID_ENTRY, getIdEntry( ) );
-                    template = AppTemplateService.getTemplate( TEMPLATE_SINGLE_ADDRESS, locale, model );
-                }
-                else
-                {
-                    Map<String, Object> model = new HashMap<String, Object>( );
-                    model.put( MARK_LIST_ADDRESSES, getAddresses( ) );
-                    model.put( MARK_ID_ENTRY, getIdEntry( ) );
-                    template = AppTemplateService.getTemplate( TEMPLATE_ADDRESS_LIST, locale, model );
-                }
-
-                jsonObject.put( JSON_HTML, template.getHtml( ) );
-
+                template = AppTemplateService.getTemplate( TEMPLATE_NO_RESULT, locale );
             }
-            catch ( JSONException e )
+            else if ( isSingleResult( ) )
             {
-                AppLogService.error( e.getMessage( ), e );
+                Map<String, Object> model = new HashMap<String, Object>( );
+                model.put( MARK_ADDRESS, getAddresses( ).get( 0 ) );
+                model.put( MARK_ID_ENTRY, getIdEntry( ) );
+                template = AppTemplateService.getTemplate( TEMPLATE_SINGLE_ADDRESS, locale, model );
             }
+            else
+            {
+                Map<String, Object> model = new HashMap<String, Object>( );
+                model.put( MARK_LIST_ADDRESSES, getAddresses( ) );
+                model.put( MARK_ID_ENTRY, getIdEntry( ) );
+                template = AppTemplateService.getTemplate( TEMPLATE_ADDRESS_LIST, locale, model );
+            }
+
+            jsonObject.put( JSON_HTML, template.getHtml( ) );
+
+            
             return jsonObject.toString( );
         }
     }
