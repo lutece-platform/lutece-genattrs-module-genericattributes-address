@@ -40,12 +40,15 @@ import fr.paris.lutece.util.ReferenceItem;
 
 import java.util.List;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
 
 /**
  * 
  * GoogleMapsProvider : provides Google Maps support for Generic Attributes
  * 
  */
+@ApplicationScoped
 public class AddressProvider implements IMapProvider
 {
     private static final long serialVersionUID = 4617492020141154185L;

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><plug-in>
-    
-        
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plug-in>        
     <!-- Plugin Informations -->
 	<name>genericattributes-address</name>
 	<class>fr.paris.lutece.plugins.genericattributes.modules.address.service.GenericAttributesAddressPlugin</class>
-	<version>2.0.3-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<description>module.genericattributes.address.module.description</description>
 	<documentation/>
 	<installation/>
@@ -13,9 +13,9 @@
 	<provider>module.genericattributes.address.module.provider</provider>
 	<provider-url>http://lutece.paris.fr</provider-url>
 	<icon-url>images/admin/skin/plugins/genericattributes/genericattributes.png</icon-url>
-	<copyright>Copyright 2001-2013 Mairie de Paris</copyright>
+	<copyright>Copyright 2001-2025 Ville de Paris</copyright>
 	<core-version-dependency>
-		<min-core-version>4.1.0</min-core-version>
+		<min-core-version>8.0.0</min-core-version>
 		<max-core-version/>	
 	</core-version-dependency>
 	
