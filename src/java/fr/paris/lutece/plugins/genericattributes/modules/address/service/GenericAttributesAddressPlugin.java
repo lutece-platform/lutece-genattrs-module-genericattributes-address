@@ -34,11 +34,13 @@
 package fr.paris.lutece.plugins.genericattributes.modules.address.service;
 
 import fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation;
+import jakarta.enterprise.context.ApplicationScoped;
 
 
 /**
  * class GenericAttributesAddressPlugin
  */
+@ApplicationScoped
 public class GenericAttributesAddressPlugin extends PluginDefaultImplementation
 {
     /**

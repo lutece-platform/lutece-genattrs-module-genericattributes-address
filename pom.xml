@@ -2,14 +2,16 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>7.0.2</version>
+        <version>8.0.0-SNAPSHOT</version>
     </parent>
+    
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>module-genericattributes-address</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>2.0.3-SNAPSHOT</version>
-    <name>Lutece Generic Attributes address module</name>
+    <version>3.0.0-SNAPSHOT</version>
+    <name>Lutece Generic Attributes Address module</name>
+    
     <repositories>
         <repository>
             <id>lutece</id>
@@ -17,27 +19,27 @@
             <url>https://dev.lutece.paris.fr/maven_repository</url>
             <layout>default</layout>
         </repository>
-     
     </repositories>
+
     <dependencies>
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>plugin-genericattributes</artifactId>
-            <version>[1.0.0-SNAPSHOT,2.9.9)</version>
+            <version>[3.0.0-SNAPSHOT,)</version>
             <type>lutece-plugin</type>
         </dependency>
         <dependency>
             <groupId>fr.paris.lutece.plugins</groupId>
             <artifactId>plugin-address</artifactId>
-            <version>[1.0.2,3.0.0-SNAPSHOT)</version>
+            <version>[2.0.0-SNAPSHOT,)</version>
             <type>lutece-plugin</type>
         </dependency>
     </dependencies>
+
     <properties>
         <componentName>genericattributes-address</componentName>
-        <jiraProjectName>FORMADDRESS</jiraProjectName>
-        <jiraComponentId>10330</jiraComponentId>
     </properties>
+
     <scm>
         <connection>scm:git:https://github.com/lutece-platform/lutece-genattrs-module-genericattributes-address.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-genattrs-module-genericattributes-address.git</developerConnection>

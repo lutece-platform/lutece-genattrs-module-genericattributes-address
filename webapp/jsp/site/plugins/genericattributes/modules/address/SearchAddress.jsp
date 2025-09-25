@@ -1,3 +1,3 @@
-<jsp:useBean id="genericattributesAddressBean" scope="application" class="fr.paris.lutece.plugins.genericattributes.modules.address.web.GenericAttributesAddressJspBean" />
+<%@page import="fr.paris.lutece.plugins.genericattributes.modules.address.web.GenericAttributesAddressJspBean"%>
 
-<%= genericattributesAddressBean.searchAddress( request ) %>
+${ genericAttributesAddressJspBean.searchAddress( pageContext.request ) }
