@@ -4,7 +4,7 @@
     <!-- Plugin Informations -->
 	<name>genericattributes-address</name>
 	<class>fr.paris.lutece.plugins.genericattributes.modules.address.service.GenericAttributesAddressPlugin</class>
-	<version>2.0.3</version>
+	<version>2.0.4-SNAPSHOT</version>
 	<description>module.genericattributes.address.module.description</description>
 	<documentation/>
 	<installation/>
