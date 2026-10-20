@@ -1,12 +1,12 @@
-<input type="hidden" id="${entry.idEntry}_map_provider" name="${entry.idEntry}_map_provider" value="${entry.mapProvider.key}"/>
-<div class="form-group" id="${entry.idEntry}_address_results"></div>
+<input type="hidden" id="${entry.idEntry?c}_map_provider" name="${entry.idEntry?c}_map_provider" value="${entry.mapProvider.key}"/>
+<div class="form-group" id="${entry.idEntry?c}_address_results"></div>
 <script type="text/javascript" src="js/plugins/genericattributes/modules/address/genericattributes_address.js"></script>
 <script type="text/javascript">
-$( '#${entry.idEntry}_button_check' ).removeClass('hide');
-$( '#${entry.idEntry}_address' ).keypress( function(event) {
+$( '#${entry.idEntry?c}_button_check' ).removeClass('hide');
+$( '#${entry.idEntry?c}_address' ).keypress( function(event) {
 	if (event.keyCode == '13') { // Enter button
 			event.preventDefault(  );
-			checkAddress( ${entry.idEntry} );
+			checkAddress( ${entry.idEntry?c} );
 	}
 });
 </script>
