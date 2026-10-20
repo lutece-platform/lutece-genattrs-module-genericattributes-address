@@ -1,5 +1,6 @@
 <input type="hidden" id="${entry.idEntry?c}_map_provider" name="${entry.idEntry?c}_map_provider" value="${entry.mapProvider.key}"/>
 <div class="form-group" id="${entry.idEntry?c}_address_results"></div>
+<div class="visually-hidden" id="${entry.idEntry?c}_address_status" role="status" aria-live="polite"></div>
 <script type="text/javascript" src="js/plugins/genericattributes/modules/address/genericattributes_address.js"></script>
 <script type="text/javascript">
 $( '#${entry.idEntry?c}_button_check' ).removeClass('hide');

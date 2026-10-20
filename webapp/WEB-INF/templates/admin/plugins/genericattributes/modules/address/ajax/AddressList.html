@@ -1,10 +1,11 @@
 <#-- lists all adresses -->
-<p>#i18n{module.genericattributes.address.listAddress.selectAddress}</p>
-
-<ul>
+<fieldset>
+<legend>#i18n{module.genericattributes.address.listAddress.selectAddress}</legend>
+<ul class="list-unstyled">
 <#list listAddresses as address>
 	<li>
-		<input type="radio" value="${address.code}" name="id_address" data-address-entry="${id_entry?c}" />&nbsp;${address.name}
+		<label><input type="radio" value="${address.code}" name="id_address" data-address-entry="${id_entry?c}" />&nbsp;${address.name}</label>
 	</li>
 </#list>
 </ul>
+</fieldset>
