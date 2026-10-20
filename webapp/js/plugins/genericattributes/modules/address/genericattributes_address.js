@@ -39,6 +39,20 @@ if ( data.singleResult ){
 	document.getElementById(id_entry + "_idAddress").value = data.idAddress;
 }	
 $('#'+id_entry + "_address_results").html(data.html);
+announceAddress( id_entry, div_results ? div_results.textContent : '' );
+}
+
+/**
+ * Announces a result or an error to the screen readers through the status region of the entry, as text
+ * @param id_entry entry id
+ * @param message the text to announce
+ * @return void
+ */
+function announceAddress( id_entry, message ){
+	var status = document.getElementById( id_entry + "_address_status" );
+	if ( status ){
+		status.textContent = ( message || '' ).replace( /\s+/g, ' ' ).trim( );
+	}
 }
 
 /**
@@ -49,6 +63,7 @@ $('#'+id_entry + "_address_results").html(data.html);
  */
 function displayError( message, id_entry ){
 	$('#'+id_entry + "_address_results").text(message);
+	announceAddress( id_entry, message );
 }
 /**
  * Put the geolocation
