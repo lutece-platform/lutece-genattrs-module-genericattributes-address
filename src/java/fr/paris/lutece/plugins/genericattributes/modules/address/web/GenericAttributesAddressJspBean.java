@@ -179,6 +179,8 @@ public class GenericAttributesAddressJspBean
         {
             searchAddress
                     .setMessage( I18nService.getLocalizedString( MESSAGE_SELECT_AN_ADDRESS, request.getLocale( ) ) );
+
+            return searchAddress.toJSONString( request.getLocale( ) );
         }
 
         long lIdAddress = LibraryAddressUtils.parseLong( strIdAddress );
@@ -187,6 +189,8 @@ public class GenericAttributesAddressJspBean
         {
             searchAddress
                     .setMessage( I18nService.getLocalizedString( MESSAGE_SELECT_AN_ADDRESS, request.getLocale( ) ) );
+
+            return searchAddress.toJSONString( request.getLocale( ) );
         }
 
         try
@@ -236,8 +240,8 @@ public class GenericAttributesAddressJspBean
         }
         else
         {
-            searchAddress.setX( address.getGeoX( ) );
-            searchAddress.setY( address.getGeoY( ) );
+            searchAddress.setX( ( address.getGeoX( ) == null ) ? null : Float.valueOf( address.getGeoX( ) ) );
+            searchAddress.setY( ( address.getGeoY( ) == null ) ? null : Float.valueOf( address.getGeoY( ) ) );
             searchAddress.setIdAddress( address.getIdAddress( ) );
 
             ReferenceItem refItem = new ReferenceItem( );

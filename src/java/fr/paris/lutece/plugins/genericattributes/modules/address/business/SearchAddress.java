@@ -59,8 +59,8 @@ public class SearchAddress
     private ReferenceList _refListAddresses;
     private String _strAddressLabel;
     private String _strMessage;
-    private float _fX;
-    private float _fY;
+    private Float _fX;
+    private Float _fY;
     private int _nIdEntry;
     private String _strIdAddress;
 
@@ -171,7 +171,7 @@ public class SearchAddress
      * X
      * @return x
      */
-    public float getX( )
+    public Float getX( )
     {
         return _fX;
     }
@@ -180,7 +180,7 @@ public class SearchAddress
      * Sets the x
      * @param fX the x
      */
-    public void setX( float fX )
+    public void setX( Float fX )
     {
         _fX = fX;
     }
@@ -189,7 +189,7 @@ public class SearchAddress
      * Sets the y
      * @param fY the y
      */
-    public void setY( float fY )
+    public void setY( Float fY )
     {
         _fY = fY;
     }
@@ -198,7 +198,7 @@ public class SearchAddress
      * Y
      * @return y
      */
-    public float getY( )
+    public Float getY( )
     {
         return _fY;
     }
