@@ -2,14 +2,14 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>8.0.0</version>
+        <version>8.0.3</version>
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>module-genericattributes-address</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1-beta-01</version>
     <name>Lutece Generic Attributes Address module</name>
     
     <repositories>
