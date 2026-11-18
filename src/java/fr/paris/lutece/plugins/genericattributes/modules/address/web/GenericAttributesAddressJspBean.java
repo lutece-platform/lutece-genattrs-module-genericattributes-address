@@ -233,7 +233,8 @@ public class GenericAttributesAddressJspBean
             throws RemoteException
     {
         Address address = AddressServiceProvider.getAdresseInfo( request, lIdAddress, false );
-        if ( address == null )
+        // A provider without this service (REST) returns an empty address: no label, nothing to show
+        if ( address == null || ( address.getAddressTypo( ) == null && address.getStreetLabel( ) == null ) )
         {
             searchAddress
                     .setMessage( I18nService.getLocalizedString( MESSAGE_ADDRESS_NOT_FOUND, request.getLocale( ) ) );
