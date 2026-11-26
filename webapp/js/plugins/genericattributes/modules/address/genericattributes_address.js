@@ -12,21 +12,8 @@
 	document.getElementById(id_entry + "_y").value = 0;
 	document.getElementById(id_entry + "_idAddress").value = 0;
 	if ( addressValue != null && addressValue != '' ){
-		$.getJSON(
-				document.getElementsByTagName('base')[0].href + "jsp/site/plugins/genericattributes/modules/address/SearchAddress.jsp",
-				{
-					 "address" : addressValue,
-					 "id_entry" : id_entry
-				},
-				function ( data )
-				{
-					if ( data.error )					{
-						displayError( data.message, id_entry );
-					} else {
-						displayResult( data, id_entry );
-					}
-				}
-		);
+		getAddressJson( "jsp/site/plugins/genericattributes/modules/address/SearchAddress.jsp",
+				{ "address" : addressValue, "id_entry" : id_entry }, id_entry );
 	}
 }
 
@@ -38,7 +25,9 @@ if ( data.singleResult ){
 	document.getElementById(id_entry + "_y").value = data.y;
 	document.getElementById(id_entry + "_idAddress").value = data.idAddress;
 }	
-$('#'+id_entry + "_address_results").html(data.html);
+if ( div_results ){
+	div_results.innerHTML = data.html || '';
+}
 announceAddress( id_entry, div_results ? div_results.textContent : '' );
 }
 
@@ -62,7 +51,10 @@ function announceAddress( id_entry, message ){
  * @return void
  */
 function displayError( message, id_entry ){
-	$('#'+id_entry + "_address_results").text(message);
+	var div_results = document.getElementById( id_entry + "_address_results" );
+	if ( div_results ){
+		div_results.textContent = message;
+	}
 	announceAddress( id_entry, message );
 }
 /**
@@ -73,15 +65,38 @@ function displayError( message, id_entry ){
 function selectAddress( id_entry, code_address ){
 var div_results = document.getElementById(id_entry + "_address_results");
 div_results.innerHTML = '';
-$.getJSON( document.getElementsByTagName('base')[0].href + "jsp/site/plugins/genericattributes/modules/address/FindAddressInfos.jsp",
-	{ "id_address" : code_address,	"id_entry" : id_entry },
-	function ( data ){
-		if ( data.error ){
-			displayError( data.message, id_entry );
-		} else {
-			displayResult( data, id_entry );
-		}
+getAddressJson( "jsp/site/plugins/genericattributes/modules/address/FindAddressInfos.jsp",
+	{ "id_address" : code_address, "id_entry" : id_entry }, id_entry );
+}
+
+/**
+ * Calls a JSON service of the module (plain script, without jQuery: the front office theme does not load it) and displays
+ * its result or its error
+ * @param path the path of the service, relative to the base of the site
+ * @param params the parameters of the query
+ * @param id_entry entry id
+ * @return void
+ */
+function getAddressJson( path, params, id_entry ){
+	var base = document.getElementsByTagName('base')[0];
+	var url = new URL( path, base ? base.href : document.baseURI );
+	Object.keys( params ).forEach( function( key ){
+		url.searchParams.set( key, params[key] );
 	});
+	fetch( url.toString( ), { headers: { 'Accept': 'application/json' }, credentials: 'same-origin' } )
+		.then( function( response ){
+			return response.json( );
+		})
+		.then( function( data ){
+			if ( data.error ){
+				displayError( data.message, id_entry );
+			} else {
+				displayResult( data, id_entry );
+			}
+		})
+		.catch( function( error ){
+			console.error( 'genericattributes address: ' + error );
+		});
 }
 
 /**

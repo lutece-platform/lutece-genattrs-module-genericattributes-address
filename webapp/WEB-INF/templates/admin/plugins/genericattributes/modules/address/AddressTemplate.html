@@ -3,12 +3,21 @@
 <div class="visually-hidden" id="${entry.idEntry?c}_address_status" role="status" aria-live="polite"></div>
 <script type="text/javascript" src="js/plugins/genericattributes/modules/address/genericattributes_address.js"></script>
 <script type="text/javascript">
-$( '#${entry.idEntry?c}_button_check' ).removeClass('hide');
-$( '#${entry.idEntry?c}_address' ).keypress( function(event) {
-	if (event.keyCode == '13') { // Enter button
-			event.preventDefault(  );
-			checkAddress( ${entry.idEntry?c} );
+// plain script, without jQuery: the front office theme does not load it
+( function( ){
+	var buttonCheck = document.getElementById( '${entry.idEntry?c}_button_check' );
+	if ( buttonCheck ) {
+		buttonCheck.classList.remove( 'hide' );
 	}
-});
+	var address = document.getElementById( '${entry.idEntry?c}_address' );
+	if ( address ) {
+		address.addEventListener( 'keydown', function( event ) {
+			if ( event.key === 'Enter' ) {
+				event.preventDefault( );
+				checkAddress( ${entry.idEntry?c} );
+			}
+		});
+	}
+})( );
 </script>
 <noscript>#i18n{module.genericattributes.address.javascript.disabled}</noscript>
